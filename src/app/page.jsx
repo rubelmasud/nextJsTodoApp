@@ -10,7 +10,7 @@ const HomePage = () => {
   useEffect(() => {
     const getTodos = async () => {
       setLoading(true);
-      await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/todos`)
+      await fetch('https://next-js-todo-app-delta.vercel.app/api/todos')
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
@@ -22,7 +22,7 @@ const HomePage = () => {
   }, []);
 
   const HandleAddTodo = async () => {
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/add-todo`, {
+    fetch('https://next-js-todo-app-delta.vercel.app/api/add-todo', {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -47,7 +47,7 @@ const HomePage = () => {
   };
 
   const HandleUpdateTodo = async () => {
-    await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/edit-todo`, {
+    await fetch('https://next-js-todo-app-delta.vercel.app/api/edit-todo', {
       method: "POST",
       body: JSON.stringify({
         id: editTodoId,
@@ -71,7 +71,7 @@ const HomePage = () => {
 
   const handleDelete = async (id) => {
     // console.log(id);
-    await fetch("http://localhost:3000/api/delete-todo", {
+    await fetch("https://next-js-todo-app-delta.vercel.app/api/delete-todo", {
       method: "POST",
       body: JSON.stringify({
         id,
