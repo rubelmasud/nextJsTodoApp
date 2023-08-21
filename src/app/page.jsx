@@ -10,7 +10,7 @@ const HomePage = () => {
   useEffect(() => {
     const getTodos = async () => {
       setLoading(true);
-      await fetch("http://localhost:3000/api/todos")
+      await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/todos`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
@@ -22,7 +22,7 @@ const HomePage = () => {
   }, []);
 
   const HandleAddTodo = async () => {
-    fetch("http://localhost:3000/api/add-todo", {
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/add-todo`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -47,7 +47,7 @@ const HomePage = () => {
   };
 
   const HandleUpdateTodo = async () => {
-    await fetch("http://localhost:3000/api/edit-todo", {
+    await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/edit-todo`, {
       method: "POST",
       body: JSON.stringify({
         id: editTodoId,
